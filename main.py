@@ -19,7 +19,7 @@ st.title('顔認識アプリ試作（MS-Azure版）')
 #assert subscription_key
 
 #公開環境用のサブスクリプションキー取得（streamlit公開サイトの環境変数として設定したものを取得する）
-subscription_key = st.secrets['secrets']['SUBSCRIPTION_KEY']
+subscription_key = st.secrets['SUBSCRIPTION_KEY']
 assert subscription_key
 
 face_api_url = 'https://abe20210512.cognitiveservices.azure.com/face/v1.0/detect'
