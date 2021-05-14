@@ -65,8 +65,8 @@ if upload_file is not None:
 		#フォントサイズを動的に変える
 		ttfontname = "./font/HannariMincho-Regular.otf"
 		fontsize=int(rect['width']/6)
-		if fontsize >= 8:
-			fontsize = 8       
+		if fontsize >= 9:
+			fontsize = 9       
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
 		draw.text((rect['left'],rect['top']-fontsize*7.5),text, font=fnt, fill='white')
