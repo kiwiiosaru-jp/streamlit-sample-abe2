@@ -23,7 +23,7 @@ subscription_key = st.secrets['SUBSCRIPTION_KEY']
 assert subscription_key
 
 face_api_url = 'https://abe20210512.cognitiveservices.azure.com/face/v1.0/detect'
-upload_file = st.file_uploader("顔の写真をアップロードしてみ",type='jpg')
+upload_file = st.file_uploader("顔の写真をアップロードしてみ",type='jpeg')
 if upload_file is not None:
 	img = Image.open(upload_file)
 	with io.BytesIO() as output:
