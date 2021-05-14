@@ -69,7 +69,7 @@ if upload_file is not None:
 			fontsize = 10       
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
-		draw.text((rect['left'],rect['top']-10),text, font=fnt, fill='white')
+		draw.text((rect['left'],rect['top']-rect['height']),text, font=fnt, fill='white')
 		draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill=None,outline='green',width=5)
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
