@@ -40,21 +40,32 @@ if upload_file is not None:
 	res = requests.post(face_api_url, params=params,headers=headers, data=binary_img)
 	results = res.json()
 	fnt = ImageFont.truetype("./font/HannariMincho-Regular.otf", 15)
+
 	for result in results:
 	    rect = result['faceRectangle']
 	    attr = result['faceAttributes']
 	    age = int(attr['age'])
 	    if attr['gender'] == "male":
-	        gender = "男性"
+	        gender = "男"
 	    else:
-	        gender = "女性"
+	        gender = "女"
 	    anger  = int(attr['emotion']['anger']*100)
 	    happiness  = int(attr['emotion']['happiness']*100)
 	    sadness  = int(attr['emotion']['sadness']*100)
 	    surprise  = int(attr['emotion']['surprise']*100)
-	    text = "性別:"+str(gender)+"\n"+"年齢:"+str(age)+"才"+"\n"+"怒り:"+str(anger)+"%"+"\n"+"楽し:"+str(happiness)+"%"+"\n"+"悲し:"+str(sadness)+"%"+"\n"+"驚き:"+str(surprise)+"%"+"\n"
+	    fear  = int(attr['emotion']['fear']*100)
+	    neutral  = int(attr['emotion']['neutral']*100)   
+	    if attr['makeup']['eyeMakeup']:
+	        eyeMakeup= "化粧"
+	    else:
+	        eyeMakeup= "スッピン"
+	    if attr['makeup']['lipMakeup']:
+	        lipMakeup= "化粧"
+	    else:
+	        lipMakeup= "スッピン"  
+	    text = "[性]"+str(gender)+" "+"[齢]"+str(age)+"才"+"\n"+"[怒]"+str(anger)+"%"+" "+"[楽]"+str(happiness)+"%"+"\n"+"[悲]"+str(sadness)+"%"+" "+"[驚]"+str(surprise)+"%"+"\n"+"[恐]"+str(fear)+"%"+" "+"[平]"+str(neutral)+"%"+"\n"+"[目]"+str(eyeMakeup)+" "+"[口]"+str(lipMakeup)+"\n"
 	    draw = ImageDraw.Draw(img)
-	    draw.text((rect['left'],rect['top']-160),text, font=fnt, fill=(0,0,0,0))
+	    draw.text((rect['left'],rect['top']-90),text, font=fnt, fill=(0,0,0,0))
 	    draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill=None,outline='green',width=5)
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
