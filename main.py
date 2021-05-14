@@ -65,11 +65,11 @@ if upload_file is not None:
 		#フォントサイズを動的に変える
 		ttfontname = "./font/HannariMincho-Regular.otf"
 		fontsize=int(rect['width']/6)
-		if fontsize >= 10:
-			fontsize = 10       
+		if fontsize >= 8:
+			fontsize = 8       
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
-		draw.text((rect['left'],rect['top']-rect['height']),text, font=fnt, fill='white')
+		draw.text((rect['left'],rect['top']-fontsize*6.5),text, font=fnt, fill='white')
 		draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill=None,outline='green',width=5)
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
