@@ -65,7 +65,7 @@ if upload_file is not None:
 	        lipMakeup= "スッピン"  
 	    text = "[性]"+str(gender)+" "+"[齢]"+str(age)+"才"+"\n"+"[怒]"+str(anger)+"%"+" "+"[楽]"+str(happiness)+"%"+"\n"+"[悲]"+str(sadness)+"%"+" "+"[驚]"+str(surprise)+"%"+"\n"+"[恐]"+str(fear)+"%"+" "+"[平]"+str(neutral)+"%"+"\n"+"[目]"+str(eyeMakeup)+" "+"[口]"+str(lipMakeup)+"\n"
 	    draw = ImageDraw.Draw(img)
-	    draw.text((rect['left'],rect['top']-120),text, font=fnt, fill='green')
+	    draw.text((rect['left'],rect['top']-120),text, font=fnt, fill='yellow')
 	    draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill=None,outline='green',width=5)
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
