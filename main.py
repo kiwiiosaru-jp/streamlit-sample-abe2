@@ -39,6 +39,7 @@ if upload_file is not None:
 	}
 	res = requests.post(face_api_url, params=params,headers=headers, data=binary_img)
 	results = res.json()
+	ttfontname = "./font/HannariMincho-Regular.otf"
 	for result in results:
 	    rect = result['faceRectangle']
 	    attr = result['faceAttributes']
@@ -63,7 +64,7 @@ if upload_file is not None:
 	        lipMakeup = "スッピン"  
 	    text = "[性]"+str(gender)+" "+"[齢]"+str(age)+"才"+"\n"+"[怒]"+str(anger)+"%"+" "+"[楽]"+str(happiness)+"%"+"\n"+"[悲]"+str(sadness)+"%"+" "+"[驚]"+str(surprise)+"%"+"\n"+"[恐]"+str(fear)+"%"+" "+"[平]"+str(neutral)+"%"+"\n"+"[目]"+str(eyeMakeup)+" "+"[口]"+str(lipMakeup)+"\n"
 	    #フォントサイズを動的に変える
-    	ttfontname = "./font/HannariMincho-Regular.otf"
+    	#ttfontname = "./font/HannariMincho-Regular.otf"
     	fontsize = int(rect['width']/6)
     	if fontsize >= 10:
         	fontsize = 10       
