@@ -110,7 +110,7 @@ if upload_file is not None:
 		fontsize=int(rect['width']/6)
 		if fontsize >= 9:
 			fontsize = 9
-		elif option == df['fst_column'][1]:
+		elif option == df['snd_column'][1]:
 			fontsize = 20
 		else:
 		    fontsize = 10 
@@ -122,4 +122,4 @@ if upload_file is not None:
 	st.image(img,caption='Uploaded Image', use_column_width=True)
 	st.write(fontsize)
 	st.write(option)
-	st.write(df['fst_column'][1])
+	st.write(df['snd_column'][1])
