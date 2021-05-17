@@ -7,6 +7,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 import pandas as pd
 from google.cloud import vision
+from google.oauth2 import service_account
 
 st.title('AI顔認識アプリ(byしげる)')
 
@@ -124,18 +125,38 @@ if upload_file is not None:
 	#st.write(option)
 	#st.write(df['fst_column'][1])
 
-
+#グーグルのAIで画像の認識結果を取得する
 #from google.cloud import vision
 #with open('./img/nuts.jpg','rb') as image_file:
 #	content = image_file.read()
+	#グーグル認証情報セット
+	service_account_key = {
+	  "type": st.secrets['google_vision_api_type'],
+	  "project_id": st.secrets['google_vision_api_project_id'],
+	  "private_key_id": st.secrets['google_vision_api_private_key_id'],
+	  "private_key": st.secrets['google_vision_api_private_key'],
+	  "client_email": st.secrets['google_vision_api_client_email'],
+	  "client_id": st.secrets['google_vision_api_client_id'],
+	  "auth_uri": st.secrets['google_vision_api_auth_uri'],
+	  "token_uri": st.secrets['google_vision_api_token_uri'],
+	  "auth_provider_x509_cert_url": st.secrets['google_vision_api_auth_provider_x509_cert_url'],
+	  "client_x509_cert_url": st.secrets['google_vision_api_client_x509_cert_url'],
+	  }
+	credentials = service_account.Credentials.from_service_account_info(service_account_key)
+	scoped_credentials = credentials.with_scopes(
+	  [
+	    'https://www.googleapis.com/auth/cloud-platform',
+	    'https://www.googleapis.com/auth/analytics.readonly'
+	  ])
+
 	content = binary_img
 	image = vision.Image(content = content)
 	#ImageAnnotatorClientのインスタンスを生成
-	annotator_client = vision.ImageAnnotatorClient()
+	annotator_client = vision.ImageAnnotatorClient(credentials=scoped_credentials)
 	response_data = annotator_client.label_detection(image=image)
 	labels = response_data.label_annotations
-	st.write("----RESULT----")
+	st.write("----画像分析結果（by Google）----")
 	for label in labels:
 		#print(label.description, ':', round(label.score * 100, 2), '%')
 		st.write(label.description, ':', round(label.score * 100, 2), '%')
-	st.write("----RESULT----")
+	st.write("----でした！----")
