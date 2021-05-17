@@ -29,7 +29,7 @@ df = pd.DataFrame({
   #'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
   #'snd_column': [1,2,3,4,5,6,7,8,9,10]
   #'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(75%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
-  'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(50%縮小)"],
+  'fst_column': ["PCからアップロード(画像サイズ100%)", "スマホからアップロード(画像サイズ50%縮小)"],
   #'snd_column': [3,4,5,6]
   'snd_column': [3,6]
 })
@@ -114,6 +114,9 @@ if upload_file is not None:
 			fontsize = 20
 		else:
 		    fontsize = 10 
+
+		st.write(fontsize)
+		
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
 		draw.text((rect['left'],rect['top']-fontsize*7.3),text, font=fnt, fill='white')
