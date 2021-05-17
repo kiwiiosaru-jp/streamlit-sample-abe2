@@ -6,6 +6,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import pandas as pd
+from google.cloud import vision
 
 st.title('AI顔認識アプリ(byしげる)')
 
@@ -124,17 +125,17 @@ if upload_file is not None:
 	#st.write(df['fst_column'][1])
 
 
-from google.cloud import vision
+#from google.cloud import vision
 #with open('./img/nuts.jpg','rb') as image_file:
 #	content = image_file.read()
-content = binary_img
-image = vision.Image(content = content)
-#ImageAnnotatorClientのインスタンスを生成
-annotator_client = vision.ImageAnnotatorClient()
-response_data = annotator_client.label_detection(image=image)
-labels = response_data.label_annotations
-st.write("----RESULT----")
-for label in labels:
-	#print(label.description, ':', round(label.score * 100, 2), '%')
-	st.write(label.description, ':', round(label.score * 100, 2), '%')
-st.write("----RESULT----")
+	content = binary_img
+	image = vision.Image(content = content)
+	#ImageAnnotatorClientのインスタンスを生成
+	annotator_client = vision.ImageAnnotatorClient()
+	response_data = annotator_client.label_detection(image=image)
+	labels = response_data.label_annotations
+	st.write("----RESULT----")
+	for label in labels:
+		#print(label.description, ':', round(label.score * 100, 2), '%')
+		st.write(label.description, ':', round(label.score * 100, 2), '%')
+	st.write("----RESULT----")
