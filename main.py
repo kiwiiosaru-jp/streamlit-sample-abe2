@@ -33,6 +33,7 @@ df = pd.DataFrame({
   #'snd_column': [3,4,5,6]
   'snd_column': [3,6]
 })
+option = ""
 option = st.selectbox(
     '写真の縮小倍率を選択',
      df['fst_column'])
