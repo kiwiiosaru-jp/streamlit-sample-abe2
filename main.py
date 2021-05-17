@@ -60,7 +60,7 @@ elif option == df['fst_column'][1]:
 else :
 	trn_num = 3
 
-upload_file = st.file_uploader("顔の写真をアップロードしてみ(スマホからもOK！)")
+upload_file = st.file_uploader("スマホで顔写真撮ってアップロードしてみ")
 if upload_file is not None:
 	img = Image.open(upload_file)
 	
