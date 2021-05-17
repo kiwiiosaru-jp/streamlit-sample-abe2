@@ -6,7 +6,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-st.title('顔認識アプリ試作（MS-Azure版）')
+st.title('AI顔認識(練習中)')
 
 #ローカル環境用のサブスクリプションキー取得
 #with open('secrets.toml') as f:
