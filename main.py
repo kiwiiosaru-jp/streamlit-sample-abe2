@@ -121,3 +121,5 @@ if upload_file is not None:
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
 	st.write(fontsize)
+	st.write(option)
+	st.write(df['fst_column'][1])
