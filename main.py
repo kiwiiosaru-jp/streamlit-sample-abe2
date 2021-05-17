@@ -122,9 +122,10 @@ if upload_file is not None:
 	#st.write(fontsize)
 	#st.write(option)
 	#st.write(df['fst_column'][1])
-	
+
+
 from google.cloud import vision
-with open('./nuts.jpg','rb') as image_file:
+with open('./img/nuts.jpg','rb') as image_file:
 	content = image_file.read()
 image = vision.Image(content = content)
 #ImageAnnotatorClientのインスタンスを生成
