@@ -9,7 +9,7 @@ import pandas as pd
 from google.cloud import vision
 from google.oauth2 import service_account
 
-st.title('AI顔認識アプリ(byしげる)')
+st.title('AI画像分析アプリ(byしげる)')
 
 #ローカル環境用のサブスクリプションキー取得
 #with open('secrets.toml') as f:
@@ -62,7 +62,7 @@ elif option == df['fst_column'][1]:
 else :
 	trn_num = 3
 
-upload_file = st.file_uploader("スマホで顔写真撮ってアップロードしてみ")
+upload_file = st.file_uploader("スマホで写真撮ってアップロードしてみ")
 if upload_file is not None:
 	img = Image.open(upload_file)
 	
