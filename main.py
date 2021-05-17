@@ -155,7 +155,7 @@ if upload_file is not None:
 	annotator_client = vision.ImageAnnotatorClient(credentials=scoped_credentials)
 	response_data = annotator_client.label_detection(image=image)
 	labels = response_data.label_annotations
-	st.write("----画像分析結果（by Google）----")
+	st.write("----画像分析結果----")
 	for label in labels:
 		#print(label.description, ':', round(label.score * 100, 2), '%')
 		st.write(label.description, ':', round(label.score * 100, 2), '%')
