@@ -125,8 +125,9 @@ if upload_file is not None:
 
 
 from google.cloud import vision
-with open('./img/nuts.jpg','rb') as image_file:
-	content = image_file.read()
+#with open('./img/nuts.jpg','rb') as image_file:
+#	content = image_file.read()
+content = binary_img
 image = vision.Image(content = content)
 #ImageAnnotatorClientのインスタンスを生成
 annotator_client = vision.ImageAnnotatorClient()
