@@ -111,7 +111,7 @@ if upload_file is not None:
 		if fontsize >= 9:
 			fontsize = 9
 		if option == df['fst_column'][1]:
-			fontsize = 20
+			fontsize = 26
 				
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
@@ -119,6 +119,6 @@ if upload_file is not None:
 		draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill=None,outline='green',width=3)
 
 	st.image(img,caption='Uploaded Image', use_column_width=True)
-	st.write(fontsize)
-	st.write(option)
-	st.write(df['fst_column'][1])
+	#st.write(fontsize)
+	#st.write(option)
+	#st.write(df['fst_column'][1])
