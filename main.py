@@ -7,7 +7,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 import pandas as pd
 
-st.title('AI顔認識アプリ(練習中)')
+st.title('AI顔認識アプリ(しげる練習中)')
 
 #ローカル環境用のサブスクリプションキー取得
 #with open('secrets.toml') as f:
@@ -29,9 +29,9 @@ df = pd.DataFrame({
   #'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
   #'snd_column': [1,2,3,4,5,6,7,8,9,10]
   #'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(75%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
-  'fst_column': ["PCからアップロード(画像サイズ100%)", "スマホからアップロード(画像サイズ50%縮小)"],
+  'fst_column': ["スマホからアップロード(画像サイズ50%縮小)","PCからアップロード(画像サイズ100%)"],
   #'snd_column': [3,4,5,6]
-  'snd_column': [3,6]
+  'snd_column': [6,3]
 })
 option = st.selectbox(
     '写真の縮小倍率を選択',
@@ -110,8 +110,8 @@ if upload_file is not None:
 		fontsize=int(rect['width']/6)
 		if fontsize >= 9:
 			fontsize = 9
-		if option == df['fst_column'][1]:
-			fontsize = 26
+		if option == df['fst_column'][0]:
+			fontsize = 28
 				
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
