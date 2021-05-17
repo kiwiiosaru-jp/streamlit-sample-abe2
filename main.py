@@ -33,7 +33,6 @@ df = pd.DataFrame({
   #'snd_column': [3,4,5,6]
   'snd_column': [3,6]
 })
-option = ""
 option = st.selectbox(
     '写真の縮小倍率を選択',
      df['fst_column'])
@@ -111,13 +110,9 @@ if upload_file is not None:
 		fontsize=int(rect['width']/6)
 		if fontsize >= 9:
 			fontsize = 9
-		elif option == df['fst_column'][1]:
+		if option == df['fst_column'][1]:
 			fontsize = 20
-		else:
-		    fontsize = 10 
-
-		st.write(fontsize)
-		
+				
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
 		draw.text((rect['left'],rect['top']-fontsize*7.3),text, font=fnt, fill='white')
