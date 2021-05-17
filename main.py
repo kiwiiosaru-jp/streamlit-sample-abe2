@@ -26,37 +26,39 @@ assert subscription_key
 face_api_url = 'https://abe20210512.cognitiveservices.azure.com/face/v1.0/detect'
 #画像縮小率を設定
 df = pd.DataFrame({
-  'fst_column': ["1倍", "1/2倍","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
-  'snd_column': [1,2,3,4,5,6,7,8,9,10]
+  #'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
+  #'snd_column': [1,2,3,4,5,6,7,8,9,10]
+   'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)"],
+  'snd_column': [1,2]
 })
 option = st.selectbox(
-    '写真の縮小倍率を選択（スマホで写真を送る場合は1/10が吉）',
+    '写真の縮小倍率を選択',
      df['fst_column'])
-'You selected: ', option
+#'You selected: ', option
 if option == df['fst_column'][0]:
 	trn_num = df['snd_column'][0]
 elif option == df['fst_column'][1]:
 	trn_num = df['snd_column'][1]
-elif option == df['fst_column'][2]:
-	trn_num = df['snd_column'][2]
-elif option == df['fst_column'][3]:
-	trn_num = df['snd_column'][3]
-elif option == df['fst_column'][4]:
-	trn_num = df['snd_column'][4]
-elif option == df['fst_column'][5]:
-	trn_num = df['snd_column'][5]
-elif option == df['fst_column'][6]:
-	trn_num = df['snd_column'][6]
-elif option == df['fst_column'][7]:
-	trn_num = df['snd_column'][7]
-elif option == df['fst_column'][8]:
-	trn_num = df['snd_column'][8]
-elif option == df['fst_column'][9]:
-	trn_num = df['snd_column'][9]
+#elif option == df['fst_column'][2]:
+#	trn_num = df['snd_column'][2]
+#elif option == df['fst_column'][3]:
+#	trn_num = df['snd_column'][3]
+#elif option == df['fst_column'][4]:
+#	trn_num = df['snd_column'][4]
+#elif option == df['fst_column'][5]:
+#	trn_num = df['snd_column'][5]
+#elif option == df['fst_column'][6]:
+#	trn_num = df['snd_column'][6]
+#elif option == df['fst_column'][7]:
+#	trn_num = df['snd_column'][7]
+#elif option == df['fst_column'][8]:
+#	trn_num = df['snd_column'][8]
+#elif option == df['fst_column'][9]:
+#	trn_num = df['snd_column'][9]
 else :
 	trn_num = 1
 
-upload_file = st.file_uploader("顔の写真をアップロードしてみ")
+upload_file = st.file_uploader("顔の写真をアップロードしてみ(スマホからもOK！)")
 if upload_file is not None:
 	img = Image.open(upload_file)
 	#画像縮小処理
