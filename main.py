@@ -7,7 +7,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 import pandas as pd
 
-st.title('AI顔認識アプリ(しげる練習中)')
+st.title('AI顔認識アプリ(byしげる)')
 
 #ローカル環境用のサブスクリプションキー取得
 #with open('secrets.toml') as f:
@@ -111,7 +111,7 @@ if upload_file is not None:
 		if fontsize >= 9:
 			fontsize = 9
 		if option == df['fst_column'][0]:
-			fontsize = 28
+			fontsize = 32
 				
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
