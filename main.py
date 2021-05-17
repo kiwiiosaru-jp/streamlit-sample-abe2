@@ -158,5 +158,6 @@ if upload_file is not None:
 	st.write("----画像分析結果----")
 	for label in labels:
 		#print(label.description, ':', round(label.score * 100, 2), '%')
+		st.write(label)
 		st.write(label.description, ':', round(label.score * 100, 2), '%')
 	st.write("----でした！----")
