@@ -28,8 +28,8 @@ face_api_url = 'https://abe20210512.cognitiveservices.azure.com/face/v1.0/detect
 df = pd.DataFrame({
   #'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
   #'snd_column': [1,2,3,4,5,6,7,8,9,10]
-  'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(90%)", "スマホからアップロード(80%)", "スマホからアップロード(70%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
-  'snd_column': [10,11,12,14,16,20]
+  'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(75%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
+  'snd_column': [3,4,5,6]
 })
 option = st.selectbox(
     '写真の縮小倍率を選択',
@@ -43,10 +43,10 @@ elif option == df['fst_column'][2]:
 	trn_num = df['snd_column'][2]
 elif option == df['fst_column'][3]:
 	trn_num = df['snd_column'][3]
-elif option == df['fst_column'][4]:
-	trn_num = df['snd_column'][4]
-elif option == df['fst_column'][5]:
-	trn_num = df['snd_column'][5]
+#elif option == df['fst_column'][4]:
+#	trn_num = df['snd_column'][4]
+#elif option == df['fst_column'][5]:
+#	trn_num = df['snd_column'][5]
 #elif option == df['fst_column'][6]:
 #	trn_num = df['snd_column'][6]
 #elif option == df['fst_column'][7]:
@@ -56,14 +56,14 @@ elif option == df['fst_column'][5]:
 #elif option == df['fst_column'][9]:
 #	trn_num = df['snd_column'][9]
 else :
-	trn_num = 10
+	trn_num = 3
 
 upload_file = st.file_uploader("顔の写真をアップロードしてみ(スマホからもOK！)")
 if upload_file is not None:
 	img = Image.open(upload_file)
 	
 	#画像縮小処理
-	img_resize = img.resize((img.width * 10, img.height * 10))
+	img_resize = img.resize((img.width * 3, img.height * 3))
 	img_resize = img_resize.resize((img_resize.width // trn_num, img_resize.height // trn_num))
 	img = img_resize
 
