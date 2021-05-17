@@ -28,8 +28,10 @@ face_api_url = 'https://abe20210512.cognitiveservices.azure.com/face/v1.0/detect
 df = pd.DataFrame({
   #'fst_column': ["PCからアップロード(1倍)", "スマホからアップロード(1/2倍)","1/3倍","1/4倍","1/5倍","1/6倍","1/7倍","1/8倍","1/9倍","1/10倍"],
   #'snd_column': [1,2,3,4,5,6,7,8,9,10]
-  'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(75%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
-  'snd_column': [3,4,5,6]
+  #'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(75%)", "スマホからアップロード(60%)", "スマホからアップロード(50%)"],
+  'fst_column': ["PCからアップロード(100%)", "スマホからアップロード(50%縮小)"],
+  #'snd_column': [3,4,5,6]
+  'snd_column': [3,6]
 })
 option = st.selectbox(
     '写真の縮小倍率を選択',
@@ -39,10 +41,10 @@ if option == df['fst_column'][0]:
 	trn_num = df['snd_column'][0]
 elif option == df['fst_column'][1]:
 	trn_num = df['snd_column'][1]
-elif option == df['fst_column'][2]:
-	trn_num = df['snd_column'][2]
-elif option == df['fst_column'][3]:
-	trn_num = df['snd_column'][3]
+#elif option == df['fst_column'][2]:
+#	trn_num = df['snd_column'][2]
+#elif option == df['fst_column'][3]:
+#	trn_num = df['snd_column'][3]
 #elif option == df['fst_column'][4]:
 #	trn_num = df['snd_column'][4]
 #elif option == df['fst_column'][5]:
@@ -107,7 +109,11 @@ if upload_file is not None:
 		ttfontname = "./font/HannariMincho-Regular.otf"
 		fontsize=int(rect['width']/6)
 		if fontsize >= 9:
-			fontsize = 9       
+			fontsize = 9
+		elif option == df['fst_column'][1]:
+			fontsize = 20
+		else:
+		    fontsize = 10 
 		fnt = ImageFont.truetype(ttfontname, fontsize)
 		draw = ImageDraw.Draw(img)
 		draw.text((rect['left'],rect['top']-fontsize*7.3),text, font=fnt, fill='white')
